@@ -1,0 +1,72 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class Day3Part2 {
+
+    public static void main (String args[]) throws FileNotFoundException {
+
+        //Creating the file object
+        File input = new File("input3-backup.txt");
+
+        //Creating a Scanner object
+        Scanner scanner = new Scanner(input);
+
+        int prioritySum = 0;
+        boolean found = false;
+
+        while (scanner.hasNext()) {
+            found = false;
+            String line1 = scanner.nextLine();
+            String line2 = scanner.nextLine();
+            String line3 = scanner.nextLine();
+            //compare strings 1 and 2
+            for (int i = 0; i < line1.length(); i++) {
+                char letterOne = line1.charAt(i);
+                for (int k = 0; k < line2.length(); k++) {
+                    char letterTwo = line2.charAt(k);
+                    //when common character is found, compare to line 3
+                    if (letterTwo == letterOne) {
+                        char sameLetter = letterOne;
+                        found = compareThird(sameLetter, line3);
+                        if (found) {
+                            prioritySum += calculatePriority(sameLetter);
+                            break;
+                        }
+                    }
+
+                }
+                if (found) {
+                    break;
+                }
+            }
+        }
+        System.out.println(prioritySum);
+    }
+    public static int calculatePriority (char letter) {
+        int priority = 0;
+        char[] letters = {'a','b','c','d','e','f','g','h','i','j',
+                'k','l','m','n','o','p','q','r','s','t',
+                'u','v','w','x','y','z','A','B','C','D',
+                'E','F','G','H','I','J','K','L','M','N',
+                'O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+        for (int i = 0; i < letters.length; i++) {
+            if (letters[i] == letter) {
+                priority = i + 1;
+                break;
+            }
+        }
+        return priority;
+    }
+
+    public static boolean compareThird (char character, String line) {
+        boolean found = false;
+        for (int i = 0; i < line.length(); i++) {
+            char lineCharacter = line.charAt(i);
+            if (character == lineCharacter) {
+                found = true;
+            }
+        }
+        return found;
+    }
+}
