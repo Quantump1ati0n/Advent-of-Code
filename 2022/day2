@@ -1,0 +1,44 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class Day2 {
+    public static void main (String args[]) throws FileNotFoundException {
+
+        //Creating the file object
+        File input = new File("input2-backup.txt");
+
+        //Creating a Scanner object
+        Scanner scanner = new Scanner(input);
+
+        int score = 0;
+        while (scanner.hasNext()) {
+            String line = scanner.nextLine();
+            char playerOne = line.charAt(0);
+            char playerTwo = line.charAt(2);
+            
+            //handle all permutations
+            if (playerOne == 'A' && playerTwo == 'X') {
+                score += 4;
+            } else if (playerOne == 'A' && playerTwo == 'Y') {
+                score += 8;
+            } else if (playerOne == 'A' && playerTwo == 'Z') {
+                score += 3;
+            } else if (playerOne == 'B' && playerTwo == 'X') {
+                score += 1;
+            } else if (playerOne == 'B' && playerTwo == 'Y') {
+                score += 5;
+            } else if (playerOne == 'B' && playerTwo == 'Z') {
+                score += 9;
+            } else if (playerOne == 'C' && playerTwo == 'X') {
+                score += 7;
+            } else if (playerOne == 'C' && playerTwo == 'Y') {
+                score += 2;
+            } else if (playerOne == 'C' && playerTwo == 'Z') {
+                score += 6;
+            }
+        }
+        System.out.println(score);
+
+    }
+}
