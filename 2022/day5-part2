@@ -1,4 +1,3 @@
-import javax.swing.event.CellEditorListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -9,7 +8,7 @@ public class Day5Part2 {
     public static void main(String args[]) throws FileNotFoundException {
 
         //Creating the file object
-        File input = new File("C:/Users/aliso/OneDrive/Desktop/input5.txt");
+        File input = new File("input5-backup.txt");
 
         //Creating a Scanner object
         Scanner scanner = new Scanner(input);
@@ -18,6 +17,12 @@ public class Day5Part2 {
         ArrayList<Character> stackOne = new ArrayList<>();
         ArrayList<Character> stackTwo = new ArrayList<>();
         ArrayList<Character> stackThree = new ArrayList<>();
+        ArrayList<Character> stackFour = new ArrayList<>();
+        ArrayList<Character> stackFive = new ArrayList<>();
+        ArrayList<Character> stackSix = new ArrayList<>();
+        ArrayList<Character> stackSeven = new ArrayList<>();
+        ArrayList<Character> stackEight = new ArrayList<>();
+        ArrayList<Character> stackNine = new ArrayList<>();
 
         //add elements to stack one
         char[] stackOneFill = {'Q','W','P','S','Z','R','H','D'};
@@ -38,11 +43,41 @@ public class Day5Part2 {
         }
 
         //add elements to stack four
-        char[] stackFourFill = {'C','V','S','H'};
+        char[] stackFourFill = {'H','F','G'};
         for (char character : stackFourFill) {
             stackFour.add(character);
         }
 
+        //add elements to stack five
+        char[] stackFiveFill = {'P','G','J','B','Z'};
+        for (char character : stackFiveFill) {
+            stackFive.add(character);
+        }
+
+        //add elements to stack six
+        char[] stackSixFill = {'Q','T','J','H','W','F','L'};
+        for (char character : stackSixFill) {
+            stackSix.add(character);
+        }
+
+        //add elements to stack seven
+        char[] stackSevenFill = {'Z','T','W','D','L','V','J','N'};
+        for (char character : stackSevenFill) {
+            stackSeven.add(character);
+        }
+
+        //add elements to stack eight
+        char[] stackEightFill = {'D','T','Z','C','J','G','H','F'};
+        for (char character : stackEightFill) {
+            stackEight.add(character);
+        }
+
+        //add elements to stack nine
+        char[] stackNineFill = {'W','P','V','M','B','H'};
+        for (char character : stackNineFill) {
+            stackNine.add(character);
+        }
+        
         while (scanner.hasNext()) {
             String line = scanner.nextLine();
 
@@ -78,6 +113,30 @@ public class Day5Part2 {
                 for (int i = cratesToMove; i >= 1; i--) {
                     elementsToMove.add(stackThree.get(stackThree.size() - i));
                 }
+            } else if (initialStack == 4) {
+                for (int i = cratesToMove; i >= 1; i--) {
+                    elementsToMove.add(stackFour.get(stackFour.size() - i));
+                }
+            } else if (initialStack == 5) {
+                for (int i = cratesToMove; i >= 1; i--) {
+                    elementsToMove.add(stackFive.get(stackFive.size() - i));
+                }
+            } else if (initialStack == 6) {
+                for (int i = cratesToMove; i >= 1; i--) {
+                    elementsToMove.add(stackSix.get(stackSix.size() - i));
+                }
+            } else if (initialStack == 7) {
+                for (int i = cratesToMove; i >= 1; i--) {
+                    elementsToMove.add(stackSeven.get(stackSeven.size() - i));
+                }
+            } else if (initialStack == 8) {
+                for (int i = cratesToMove; i >= 1; i--) {
+                    elementsToMove.add(stackEight.get(stackEight.size() - i));
+                }
+            } else if (initialStack == 9) {
+                for (int i = cratesToMove; i >= 1; i--) {
+                    elementsToMove.add(stackNine.get(stackNine.size() - i));
+                }
             }
 
             //2. iterate over list and add the elements to end stack
@@ -92,6 +151,30 @@ public class Day5Part2 {
             } else if (endStack == 3) {
                 for (char character : elementsToMove) {
                     stackThree.add(character);
+                }
+            } else if (endStack == 4) {
+                for (char character : elementsToMove) {
+                    stackFour.add(character);
+                }
+            } else if (endStack == 5) {
+                for (char character : elementsToMove) {
+                    stackFive.add(character);
+                }
+            } else if (endStack == 6) {
+                for (char character : elementsToMove) {
+                    stackSix.add(character);
+                }
+            } else if (endStack == 7) {
+                for (char character : elementsToMove) {
+                    stackSeven.add(character);
+                }
+            } else if (endStack == 8) {
+                for (char character : elementsToMove) {
+                    stackEight.add(character);
+                }
+            } else if (endStack == 9) {
+                for (char character : elementsToMove) {
+                    stackNine.add(character);
                 }
             }
 
@@ -108,24 +191,49 @@ public class Day5Part2 {
                 }
             } else if (initialStack == 3) {
                 for (int i = cratesToMove; i >= 1; i--) {
-                    int last = stackTwo.size() - 1;
-                    stackTwo.remove(last);
+                    int last = stackThree.size() - 1;
+                    stackThree.remove(last);
+                }
+            } else if (initialStack == 4) {
+                for (int i = cratesToMove; i >= 1; i--) {
+                    int last = stackFour.size() - 1;
+                    stackFour.remove(last);
+                }
+            } else if (initialStack == 5) {
+                for (int i = cratesToMove; i >= 1; i--) {
+                    int last = stackFive.size() - 1;
+                    stackFive.remove(last);
+                }
+            } else if (initialStack == 6) {
+                for (int i = cratesToMove; i >= 1; i--) {
+                    int last = stackSix.size() - 1;
+                    stackSix.remove(last);
+                }
+            } else if (initialStack == 7) {
+                for (int i = cratesToMove; i >= 1; i--) {
+                    int last = stackSeven.size() - 1;
+                    stackSeven.remove(last);
+                }
+            } else if (initialStack == 8) {
+                for (int i = cratesToMove; i >= 1; i--) {
+                    int last = stackEight.size() - 1;
+                    stackEight.remove(last);
+                }
+            } else if (initialStack == 9) {
+                for (int i = cratesToMove; i >= 1; i--) {
+                    int last = stackNine.size() - 1;
+                    stackNine.remove(last);
                 }
             }
-
-            System.out.println(stackOne);
-            System.out.println(stackTwo);
-            System.out.println(stackThree);
-
         }
-//        System.out.println(stackOne.get(stackOne.size() - 1));
-//        System.out.println(stackTwo.get(stackTwo.size() - 1));
-//        System.out.println(stackThree.get(stackThree.size() - 1));
-//        System.out.println(stackFour.get(stackFour.size() - 1));
-//        System.out.println(stackFive.get(stackFive.size() - 1));
-//        System.out.println(stackSix.get(stackSix.size() - 1));
-//        System.out.println(stackSeven.get(stackSeven.size() - 1));
-//        System.out.println(stackEight.get(stackEight.size() - 1));
-//        System.out.println(stackNine.get(stackNine.size() - 1));
+        System.out.println(stackOne.get(stackOne.size() - 1));
+        System.out.println(stackTwo.get(stackTwo.size() - 1));
+        System.out.println(stackThree.get(stackThree.size() - 1));
+        System.out.println(stackFour.get(stackFour.size() - 1));
+        System.out.println(stackFive.get(stackFive.size() - 1));
+        System.out.println(stackSix.get(stackSix.size() - 1));
+        System.out.println(stackSeven.get(stackSeven.size() - 1));
+        System.out.println(stackEight.get(stackEight.size() - 1));
+        System.out.println(stackNine.get(stackNine.size() - 1));
     }
 }
