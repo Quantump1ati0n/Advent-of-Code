@@ -1,0 +1,48 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class Day4 {
+    public static void main (String args[]) throws FileNotFoundException {
+
+        //Creating the file object
+        File input = new File("input4-backup.txt");
+
+        //Creating a Scanner object
+        Scanner scanner = new Scanner(input);
+
+        int redundantPairs = 0;
+
+        while (scanner.hasNext()) {
+            String line = scanner.nextLine();
+
+            //split line at comma
+            int indexOfComma = line.indexOf(',');
+            String elfOne = line.substring(0, indexOfComma);
+            String elfTwo = line.substring(indexOfComma + 1, line.length());
+
+            //split elf one at hyphen and store range of elf one
+            int indexOfHyphen = elfOne.indexOf('-');
+            String elfOneLowerBound = elfOne.substring(0, indexOfHyphen);
+            String elfOneUpperBound = elfOne.substring(indexOfHyphen + 1, elfOne.length());
+            int elfOneLower = Integer.parseInt(elfOneLowerBound);
+            int elfOneUpper = Integer.parseInt(elfOneUpperBound);
+
+            //store range of elf two
+            indexOfHyphen = elfTwo.indexOf('-');
+            String elfTwoLowerBound = elfTwo.substring(0, indexOfHyphen);
+            String elfTwoUpperBound = elfTwo.substring(indexOfHyphen + 1, elfTwo.length());
+            int elfTwoLower = Integer.parseInt(elfTwoLowerBound);
+            int elfTwoUpper = Integer.parseInt(elfTwoUpperBound);
+
+            //check if one elf's range is fully within the other's
+            if (elfOneLower >= elfTwoLower && elfOneUpper <= elfTwoUpper) {
+                redundantPairs++;
+            } else if (elfTwoLower >= elfOneLower && elfTwoUpper <= elfOneUpper) {
+                redundantPairs++;
+            }
+        }
+        System.out.println(redundantPairs);
+
+    }
+}
