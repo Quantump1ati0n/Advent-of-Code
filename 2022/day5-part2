@@ -9,7 +9,7 @@ public class Day5Part2 {
     public static void main(String args[]) throws FileNotFoundException {
 
         //Creating the file object
-        File input = new File("C:/Users/aliso/Desktop/input5.txt");
+        File input = new File("C:/Users/aliso/OneDrive/Desktop/input5.txt");
 
         //Creating a Scanner object
         Scanner scanner = new Scanner(input);
@@ -20,21 +20,27 @@ public class Day5Part2 {
         ArrayList<Character> stackThree = new ArrayList<>();
 
         //add elements to stack one
-        char[] stackOneFill = {'Z', 'N'};
+        char[] stackOneFill = {'Q','W','P','S','Z','R','H','D'};
         for (char character : stackOneFill) {
             stackOne.add(character);
         }
 
         //add elements to stack two
-        char[] stackTwoFill = {'M', 'C', 'D'};
+        char[] stackTwoFill = {'V','B','R','W','Q','H','F'};
         for (char character : stackTwoFill) {
             stackTwo.add(character);
         }
 
         //add elements to stack three
-        char[] stackThreeFill = {'P'};
+        char[] stackThreeFill = {'C','V','S','H'};
         for (char character : stackThreeFill) {
             stackThree.add(character);
+        }
+
+        //add elements to stack four
+        char[] stackFourFill = {'C','V','S','H'};
+        for (char character : stackFourFill) {
+            stackFour.add(character);
         }
 
         while (scanner.hasNext()) {
@@ -62,13 +68,11 @@ public class Day5Part2 {
             ArrayList<Character> elementsToMove = new ArrayList<>();
             if (initialStack == 1) {
                 for (int i = cratesToMove; i >= 1; i--) {
-                    System.out.println(cratesToMove);
-                    System.out.println(stackOne.size());
+                    elementsToMove.add(stackOne.get(stackOne.size() - i));
                 }
             } else if (initialStack == 2) {
                 for (int i = cratesToMove; i >= 1; i--) {
                     elementsToMove.add(stackTwo.get(stackTwo.size() - i));
-                    //System.out.println(elementsToMove);
                 }
             } else if (initialStack == 3) {
                 for (int i = cratesToMove; i >= 1; i--) {
@@ -77,13 +81,41 @@ public class Day5Part2 {
             }
 
             //2. iterate over list and add the elements to end stack
+            if (endStack == 1) {
+                for (char character : elementsToMove) {
+                    stackOne.add(character);
+                }
+            } else if (endStack == 2) {
+                for (char character : elementsToMove) {
+                    stackTwo.add(character);
+                }
+            } else if (endStack == 3) {
+                for (char character : elementsToMove) {
+                    stackThree.add(character);
+                }
+            }
 
             //3. delete the elements from the initial stack
+            if (initialStack == 1) {
+                for (int i = cratesToMove; i >= 1; i--) {
+                    int last = stackOne.size() - 1;
+                    stackOne.remove(last);
+                }
+            } else if (initialStack == 2) {
+                for (int i = cratesToMove; i >= 1; i--) {
+                    int last = stackTwo.size() - 1;
+                    stackTwo.remove(last);
+                }
+            } else if (initialStack == 3) {
+                for (int i = cratesToMove; i >= 1; i--) {
+                    int last = stackTwo.size() - 1;
+                    stackTwo.remove(last);
+                }
+            }
 
-
-//            System.out.println(stackOne);
-//            System.out.println(stackTwo);
-//            System.out.println(stackThree);
+            System.out.println(stackOne);
+            System.out.println(stackTwo);
+            System.out.println(stackThree);
 
         }
 //        System.out.println(stackOne.get(stackOne.size() - 1));
