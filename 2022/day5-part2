@@ -1,0 +1,99 @@
+import javax.swing.event.CellEditorListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Day5Part2 {
+
+    public static void main(String args[]) throws FileNotFoundException {
+
+        //Creating the file object
+        File input = new File("C:/Users/aliso/Desktop/input5.txt");
+
+        //Creating a Scanner object
+        Scanner scanner = new Scanner(input);
+
+        //initialize stacks
+        ArrayList<Character> stackOne = new ArrayList<>();
+        ArrayList<Character> stackTwo = new ArrayList<>();
+        ArrayList<Character> stackThree = new ArrayList<>();
+
+        //add elements to stack one
+        char[] stackOneFill = {'Z', 'N'};
+        for (char character : stackOneFill) {
+            stackOne.add(character);
+        }
+
+        //add elements to stack two
+        char[] stackTwoFill = {'M', 'C', 'D'};
+        for (char character : stackTwoFill) {
+            stackTwo.add(character);
+        }
+
+        //add elements to stack three
+        char[] stackThreeFill = {'P'};
+        for (char character : stackThreeFill) {
+            stackThree.add(character);
+        }
+
+        while (scanner.hasNext()) {
+            String line = scanner.nextLine();
+
+            //extract how many crates to move
+            int indexOfFirstSpace = line.indexOf(' ');
+            int indexOfSecondSpace = line.indexOf(' ', indexOfFirstSpace + 1);
+            String crates = line.substring(indexOfFirstSpace + 1, indexOfSecondSpace);
+            int cratesToMove = Integer.parseInt(crates);
+
+            //extract initial stack
+            int indexOfThirdSpace = line.indexOf(' ', indexOfSecondSpace + 1);
+            int indexOfFourthSpace = line.indexOf(' ', indexOfThirdSpace + 1);
+            String from = line.substring(indexOfThirdSpace + 1, indexOfFourthSpace);
+            int initialStack = Integer.parseInt(from);
+
+            //extract ending stack
+            int indexOfFifthSpace = line.indexOf(' ', indexOfFourthSpace + 1);
+            String to = line.substring(indexOfFifthSpace + 1, line.length());
+            int endStack = Integer.parseInt(to);
+
+            //complete instruction
+            //1. get the last 'cratesToMove' elements from initial stack and add to new list
+            ArrayList<Character> elementsToMove = new ArrayList<>();
+            if (initialStack == 1) {
+                for (int i = cratesToMove; i >= 1; i--) {
+                    System.out.println(cratesToMove);
+                    System.out.println(stackOne.size());
+                }
+            } else if (initialStack == 2) {
+                for (int i = cratesToMove; i >= 1; i--) {
+                    elementsToMove.add(stackTwo.get(stackTwo.size() - i));
+                    //System.out.println(elementsToMove);
+                }
+            } else if (initialStack == 3) {
+                for (int i = cratesToMove; i >= 1; i--) {
+                    elementsToMove.add(stackThree.get(stackThree.size() - i));
+                }
+            }
+
+            //2. iterate over list and add the elements to end stack
+
+            //3. delete the elements from the initial stack
+
+
+//            System.out.println(stackOne);
+//            System.out.println(stackTwo);
+//            System.out.println(stackThree);
+
+        }
+//        System.out.println(stackOne.get(stackOne.size() - 1));
+//        System.out.println(stackTwo.get(stackTwo.size() - 1));
+//        System.out.println(stackThree.get(stackThree.size() - 1));
+//        System.out.println(stackFour.get(stackFour.size() - 1));
+//        System.out.println(stackFive.get(stackFive.size() - 1));
+//        System.out.println(stackSix.get(stackSix.size() - 1));
+//        System.out.println(stackSeven.get(stackSeven.size() - 1));
+//        System.out.println(stackEight.get(stackEight.size() - 1));
+//        System.out.println(stackNine.get(stackNine.size() - 1));
+    }
+}
